@@ -2,6 +2,7 @@ import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { DSkinSwap } from "../target/types/d_skin_swap";
 import { PublicKey, Keypair } from "@solana/web3.js";
+import { expect } from "chai";
 
 describe("d-skin-swap", () => {
   // Configure the client to use the local cluster.
@@ -31,6 +32,7 @@ describe("d-skin-swap", () => {
     const tx = await program.methods
       .initialize(feeRate)
       .accounts({
+        // @ts-ignore
         marketplaceConfig: marketplaceConfigPDA,
         authority: authority.publicKey,
         treasury: treasury.publicKey,
